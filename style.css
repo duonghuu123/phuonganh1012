@@ -79,9 +79,9 @@ body {
 /* ẢNH */
 .floating-img {
     position: absolute;
-    width: 180px;
+    width: 260px;
     height: auto;
-    max-height: 240px;
+    max-height: 340px;
     object-fit: cover;
     border-radius: 25px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.35);
