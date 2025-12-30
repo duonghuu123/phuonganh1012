@@ -26,7 +26,7 @@ if (music) {
 
     document.addEventListener("click", enableSound);
     document.addEventListener("mousemove", enableSound);
-    document.addEventListener("touchstart", enableSound);
+
 }
 
 /* ================= 💌 HIỆN DÒNG CHỮ KẾT ================= */
