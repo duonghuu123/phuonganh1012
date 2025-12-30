@@ -9,26 +9,36 @@ const img3 = document.querySelector(".img3");
 let W = document.documentElement.clientWidth;
 let H = document.documentElement.clientHeight;
 
-/* PHÁT NHẠC SAU TƯƠNG TÁC */
-function startMusic() {
-    music.volume = 0.18;
-    music.play().catch(() => {});
-    document.removeEventListener("mousemove", startMusic);
-    document.removeEventListener("touchstart", startMusic);
+/* ================= 🎵 NHẠC (AUTOPLAY + BỎ MUTE SAU TƯƠNG TÁC) ================= */
+
+// đảm bảo audio tồn tại
+if (music) {
+    music.volume = 0.2; // 0 → 1 (KHÔNG được dùng 100)
+
+    function enableSound() {
+        music.muted = false;
+        music.play().catch(() => {});
+
+        document.removeEventListener("click", enableSound);
+        document.removeEventListener("mousemove", enableSound);
+        document.removeEventListener("touchstart", enableSound);
+    }
+
+    document.addEventListener("click", enableSound);
+    document.addEventListener("mousemove", enableSound);
+    document.addEventListener("touchstart", enableSound);
 }
-document.addEventListener("mousemove", startMusic);
-document.addEventListener("touchstart", startMusic);
 
-/* HIỆN DÒNG CHỮ KẾT */
+/* ================= 💌 HIỆN DÒNG CHỮ KẾT ================= */
 setTimeout(() => {
-    finalMessage.style.opacity = 1;
-}, 10000);
+    if (finalMessage) finalMessage.style.opacity = 1;
+}, 5000);
 
-/* TRÁI TIM CHUYỂN ĐỘNG */
+/* ================= ❤️ TRÁI TIM CHUYỂN ĐỘNG ================= */
 let angle = 0;
 const radius = 30;
 
-/* ẢNH */
+/* ================= 🖼️ ẢNH ================= */
 const objects = [
     { el: img1, x: 60, y: 60, vx: 1.1, vy: 1.0 },
     { el: img2, x: W - 340, y: 60, vx: -1.0, vy: 1.1 },
@@ -37,12 +47,17 @@ const objects = [
 
 function animate() {
     angle += 0.01;
-    heart.style.transform =
-        `translate(calc(-50% + ${Math.cos(angle) * radius}px),
-                   calc(-50% + ${Math.sin(angle) * radius}px))
-         rotate(-45deg)`;
+
+    if (heart) {
+        heart.style.transform =
+            `translate(calc(-50% + ${Math.cos(angle) * radius}px),
+                       calc(-50% + ${Math.sin(angle) * radius}px))
+             rotate(-45deg)`;
+    }
 
     objects.forEach(o => {
+        if (!o.el) return;
+
         o.x += o.vx;
         o.y += o.vy;
 
@@ -57,12 +72,12 @@ function animate() {
 }
 animate();
 
-/* CẬP NHẬT KHI RESIZE */
+/* ================= 🔄 CẬP NHẬT KHI RESIZE ================= */
 window.addEventListener("resize", () => {
     location.reload();
 });
 
-/* SPARKLE TIM TRẮNG */
+/* ================= 🌸 SPARKLE TIM TRẮNG ================= */
 document.addEventListener("mousemove", e => {
     const s = document.createElement("div");
     s.className = "sparkle";

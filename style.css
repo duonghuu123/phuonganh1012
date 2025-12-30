@@ -93,3 +93,10 @@ body {
     0% { opacity: 1; transform: scale(1); }
     100% { opacity: 0; transform: scale(2); }
 }
+#bgMusic {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    opacity: 0.85;
+}
