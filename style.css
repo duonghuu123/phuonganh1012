@@ -7,8 +7,8 @@
 body {
     height: 100vh;
     overflow: hidden;
-    background: radial-gradient(circle, #ffb6c1, #ff4d6d);
-    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #ffb6c1, #ff4d6d);
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
     text-align: center;
 }
@@ -20,11 +20,12 @@ body {
 }
 
 .message {
-    margin-top: 10px;
+    margin-top: 8px;
     font-size: 18px;
+    opacity: 0.9;
 }
 
-/* 💌 DÒNG CHỮ KẾT */
+/* DÒNG CHỮ KẾT */
 .final-message {
     position: absolute;
     bottom: 30px;
@@ -35,7 +36,7 @@ body {
     font-style: italic;
 }
 
-/* ❤️ TRÁI TIM */
+/* TRÁI TIM */
 .heart {
     width: 90px;
     height: 90px;
@@ -69,24 +70,24 @@ body {
     top: 0;
 }
 
-/* 🖼️ ẢNH */
+@keyframes beat {
+    0% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+    50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.15); }
+    100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+}
+
+/* ẢNH */
 .floating-img {
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: auto;
+    max-height: 240px;
     object-fit: cover;
     border-radius: 25px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.35);
 }
 
-/* ANIMATION */
-@keyframes beat {
-    0%   { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
-    50%  { transform: translate(-50%, -50%) rotate(-45deg) scale(1.2); }
-    100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
-}
-
-/* 🌸 SPARKLE TIM TRẮNG */
+/* SPARKLE TIM TRẮNG */
 .sparkle {
     position: absolute;
     font-size: 14px;
@@ -96,6 +97,6 @@ body {
 }
 
 @keyframes sparkle {
-    0%   { opacity: 1; transform: scale(1); }
+    0% { opacity: 1; transform: scale(1); }
     100% { opacity: 0; transform: scale(2); }
 }
